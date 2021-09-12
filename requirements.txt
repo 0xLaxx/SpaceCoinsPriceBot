@@ -1,0 +1,6 @@
+python-telegram-bot
+pycoingecko
+uniswap
+decimal
+web3
+time
