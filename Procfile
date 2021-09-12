@@ -1,1 +1,1 @@
-worker: python NotifymETH.py
+worker: python SpaceCoinsPriceBot.py
