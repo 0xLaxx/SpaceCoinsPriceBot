@@ -54,6 +54,15 @@ def beta_command(update, context):
     price = get_price_from_address(beta)
     output = f"Beta is now `${str(round(price,2))}`"
     update.message.reply_text(output, parse_mode=ParseMode.MARKDOWN)
+    
+def price_command(update, context):
+    price_beta = get_price_from_address(beta)
+    price_gamma = get_price_from_address(gamma)
+    price_kappa = get_price_from_address(kappa)
+    price_rho = get_price_from_address(rho)
+    price_xi = get_price_from_address(xi)
+    output = f"Beta: `${str(round(price_beta,2))}`\nRho: `${str(round(price_rho,2))}`\nKappa: `${str(round(price_kappa,2))}`\nGamma: `${str(round(price_gamma,2))}`\nXi: `${str(round(price_xi,6))}`"
+    update.message.reply_text(output, parse_mode=ParseMode.MARKDOWN)
 
 def main():
     updater = Updater("1978205069:AAHV1wqGVl7gI3WwfTLFbtwQha4o0oEkcJo", use_context=True)
@@ -64,6 +73,7 @@ def main():
     dp.add_handler(CommandHandler("kappa", kappa_command))
     dp.add_handler(CommandHandler("beta", beta_command))
     dp.add_handler(CommandHandler("rho", rho_command))
+    dp.add_handler(CommandHandler("price", price_command))
     updater.start_polling()
     updater.idle()
 
