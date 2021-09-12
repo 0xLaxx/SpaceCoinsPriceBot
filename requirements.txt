@@ -1,6 +1,6 @@
 python-telegram-bot
 pycoingecko
-uniswap
-decimal
+uniswap-python
 web3
-time
+python-dotenv
+requests
