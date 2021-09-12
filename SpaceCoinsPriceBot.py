@@ -1,9 +1,3 @@
-class Token:
-  def __init__(self, address, triggerprice, notified):
-    self.address = address
-    self.triggerprice = triggerprice
-    self.notified = notified
-
 from telegram.ext import *
 from telegram import ParseMode
 from uniswap import Uniswap
