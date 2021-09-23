@@ -4,4 +4,3 @@ uniswap-python
 web3
 python-dotenv
 requests
-pycoingecko
