@@ -66,6 +66,10 @@ def beta_command(update, context):
     output = f"Beta is now `${str(round(price,2))}`"
     update.message.reply_text(output, parse_mode=ParseMode.MARKDOWN, quote=False)
     
+def tip_command(update, context):
+    output = f"If you want to tip me for hosting and programming the bot, feel free to send me any shitcoin of your choice here\n`0xf3912BAbBC95b383C1BD13654a4361D252185047`"
+    update.message.reply_text(output, parse_mode=ParseMode.MARKDOWN, quote=False)
+    
 def price_command(update, context):
 
     try:
@@ -89,6 +93,7 @@ def main():
     dp.add_handler(CommandHandler("beta", beta_command))
     dp.add_handler(CommandHandler("rho", rho_command))
     dp.add_handler(CommandHandler("price", price_command))
+    dp.add_handler(CommandHandler("tip", tip_command))
     updater.start_polling()
     updater.idle()
 
