@@ -68,7 +68,7 @@ def price_command(update, context):
     if (datetime.datetime.now() < next_request_time):
         delta = next_request_time - datetime.datetime.now()
         if(delta.seconds > 60):
-            update.message.reply_text(f'Next update possible in {delta.seconds/60} minutes!', quote = False)
+            update.message.reply_text(f'Next update possible in {int(delta.seconds/60)} minute(s)!', quote = False)
         else:
             update.message.reply_text(f'Next update possible in {delta.seconds} seconds!', quote = False)
     else:
