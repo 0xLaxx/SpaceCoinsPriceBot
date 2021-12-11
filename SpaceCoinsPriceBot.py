@@ -10,7 +10,7 @@ import datetime
 cg = CoinGeckoAPI()
 print("Bot started...")
 
-wait_time = datetime.timedelta(minutes = 1)
+wait_time = datetime.timedelta(minutes = 30)
 next_request_time = datetime.datetime.now()
 
 eth = "0x0000000000000000000000000000000000000000"
@@ -67,7 +67,10 @@ def price_command(update, context):
     global next_request_time
     if (datetime.datetime.now() < next_request_time):
         delta = next_request_time - datetime.datetime.now()
-        update.message.reply_text(f'Next update possible in ${delta.seconds} seconds!')
+        if(delta.seconds > 60):
+            update.message.reply_text(f'Next update possible in {delta.seconds/60} minutes!')
+        else:
+            update.message.reply_text(f'Next update possible in {delta.seconds} seconds!')
     else:
         try:
             price_beta = get_price_from_address(beta)
