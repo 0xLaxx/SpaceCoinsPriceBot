@@ -5,7 +5,6 @@ from decimal import Decimal
 from web3 import Web3
 from time import sleep
 from pycoingecko import CoinGeckoAPI
-import requests
 import datetime
 
 cg = CoinGeckoAPI()
@@ -65,27 +64,22 @@ def tip_command(update, context):
     update.message.reply_text(output, parse_mode = ParseMode.MARKDOWN, quote = False)
     
 def price_command(update, context):
-    
+    global next_request_time
     if (datetime.datetime.now() < next_request_time):
         delta = next_request_time - datetime.datetime.now()
         update.message.reply_text(f'Next update possible in ${delta.seconds} seconds!')
-    
-    try:
-        price_beta = get_price_from_address(beta)
-        price_gamma = get_price_from_address(gamma)
-        price_kappa = get_price_from_address(kappa)
-        price_rho = get_price_from_address(rho)
-        price_xi = get_price_from_address(xi)
-        output = f"Beta: `${str(round(price_beta,2))}`\nRho: `${str(round(price_rho,2))}`\nKappa: `${str(round(price_kappa,2))}`\nGamma: `${str(round(price_gamma,2))}`\nXi: `${str(round(price_xi,6))}`"
-        update.message.reply_text(output, parse_mode = ParseMode.MARKDOWN, quote = False)
-        updateNextRequestTime()
-        
-    except:
-        update.message.reply_text('Error. Try again later lol', parse_mode = ParseMode.MARKDOWN, quote = False)
-
-def updateNextRequestTime():
-    next_request_time = datetime.datetime.now() + wait_time
-    print(next_request_time)
+    else:
+        try:
+            price_beta = get_price_from_address(beta)
+            price_gamma = get_price_from_address(gamma)
+            price_kappa = get_price_from_address(kappa)
+            price_rho = get_price_from_address(rho)
+            price_xi = get_price_from_address(xi)
+            output = f"Beta: `${str(round(price_beta,2))}`\nRho: `${str(round(price_rho,2))}`\nKappa: `${str(round(price_kappa,2))}`\nGamma: `${str(round(price_gamma,2))}`\nXi: `${str(round(price_xi,6))}`"
+            update.message.reply_text(output, parse_mode = ParseMode.MARKDOWN, quote = False)
+            next_request_time = datetime.datetime.now() + wait_time
+        except:
+            update.message.reply_text('Error. Try again later lol', parse_mode = ParseMode.MARKDOWN, quote = False)
 
 def main():
     updater = Updater("1978205069:AAHV1wqGVl7gI3WwfTLFbtwQha4o0oEkcJo", use_context = True)
