@@ -84,7 +84,6 @@ def price_command(update, context):
         update.message.reply_text('Error. Try again later lol', parse_mode = ParseMode.MARKDOWN, quote = False)
 
 def updateNextRequestTime():
-    print(next_request_time)
     next_request_time = datetime.datetime.now() + wait_time
     print(next_request_time)
 
