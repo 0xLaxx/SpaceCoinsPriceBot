@@ -12,7 +12,7 @@ cg = CoinGeckoAPI()
 print("Bot started...")
 
 wait_time = datetime.timedelta(minutes = 1)
-next = datetime.datetime.now()
+next_time = datetime.datetime.now()
 
 eth = "0x0000000000000000000000000000000000000000"
 private_key =  None
@@ -76,8 +76,8 @@ def tip_command(update, context):
     
 def price_command(update, context):
     
-    if(datetime.datetime.now() < next):
-        delta = next - datetime.datetime.now()
+    if(datetime.datetime.now() < next_time):
+        delta = next_time - datetime.datetime.now()
         update.message.reply_text(f'Next update possible in ${delta.seconds} seconds!')
     
     try:
@@ -88,7 +88,7 @@ def price_command(update, context):
         price_xi = get_price_from_address(xi,False)        
         output = f"Beta: `${str(round(price_beta,2))}`\nRho: `${str(round(price_rho,2))}`\nKappa: `${str(round(price_kappa,2))}`\nGamma: `${str(round(price_gamma,2))}`\nXi: `${str(round(price_xi,6))}`"
         update.message.reply_text(output, parse_mode=ParseMode.MARKDOWN, quote=False)
-        next = datetime.datetime.now() + wait_time
+        next_time = datetime.datetime.now() + wait_time
         
     except:
         update.message.reply_text('Error. Try again later lol', parse_mode=ParseMode.MARKDOWN, quote=False)
