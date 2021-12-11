@@ -27,7 +27,7 @@ beta = '0x35f67c1d929e106fdff8d1a55226afe15c34dbe2'
 rho = '0x3f3cd642e81d030d7b514a2ab5e3a5536beb90ec'
 
 def get_price_from_address(token, printsome):
-    price_in_ETH = uniswap.get_price_input(Web3.toChecksumAddress(token), Web3.toChecksumAddress(eth), 10 *  * 18)
+    price_in_ETH = uniswap.get_price_input(Web3.toChecksumAddress(token), Web3.toChecksumAddress(eth), 10 ** 18)
     price_in_ETH_adjusted = Web3.fromWei(price_in_ETH, 'ether')
 
     #ethprice = requests.get('https://api.covalenthq.com/v1/pricing/historical_by_addresses_v2/1/usd/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2/?key=ckey_f1ce8b78208646bbacc2800894e')
