@@ -26,7 +26,7 @@ beta = '0x35f67c1d929e106fdff8d1a55226afe15c34dbe2'
 rho = '0x3f3cd642e81d030d7b514a2ab5e3a5536beb90ec'
 
 def get_price_from_address(token):
-    price_in_ETH = uniswap.get_price_input(Web3.toChecksumAddress(token), Web3.toChecksumAddress(eth), 10 *  * 18)
+    price_in_ETH = uniswap.get_price_input(Web3.toChecksumAddress(token), Web3.toChecksumAddress(eth), 10 ** 18)
     price_in_ETH_adjusted = Web3.fromWei(price_in_ETH, 'ether')
     stats = cg.get_price(ids = 'ethereum', vs_currencies = 'usd', include_24hr_change = 'false', include_market_cap = 'false', include_24hr_vol = 'false')
     ethprice = float(stats['ethereum']['usd'])
