@@ -8,7 +8,7 @@ from pycoingecko import CoinGeckoAPI
 import datetime
 
 cg = CoinGeckoAPI()
-print("Bot started...")
+print("Bot v20.12.22 started...")
 
 #wait_time = datetime.timedelta(seconds = 10)
 #next_request_time = datetime.datetime.now()
