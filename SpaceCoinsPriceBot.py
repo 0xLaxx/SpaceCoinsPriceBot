@@ -10,8 +10,8 @@ import datetime
 cg = CoinGeckoAPI()
 print("Bot started...")
 
-wait_time = datetime.timedelta(seconds = 10)
-next_request_time = datetime.datetime.now()
+#wait_time = datetime.timedelta(seconds = 10)
+#next_request_time = datetime.datetime.now()
 
 eth = "0x0000000000000000000000000000000000000000"
 private_key = None
@@ -64,14 +64,14 @@ def tip_command(update, context):
     update.message.reply_text(output, parse_mode = ParseMode.MARKDOWN, quote = False)
     
 def price_command(update, context):
-    global next_request_time
-    if (datetime.datetime.now() < next_request_time):
-        delta = next_request_time - datetime.datetime.now()
-        if(delta.seconds > 60):
-            update.message.reply_text(f'Next update possible in {int(delta.seconds/60)} minute(s)!', quote = False)
-        else:
-            update.message.reply_text(f'Next update possible in {delta.seconds} seconds!', quote = False)
-    else:
+    #global next_request_time
+    #if (datetime.datetime.now() < next_request_time):
+        #delta = next_request_time - datetime.datetime.now()
+        #if(delta.seconds > 60):
+            #update.message.reply_text(f'Next update possible in {int(delta.seconds/60)} minute(s)!', quote = False)
+        #else:
+            #update.message.reply_text(f'Next update possible in {delta.seconds} seconds!', quote = False)
+    #else:
         try:
             price_beta = get_price_from_address(beta)
             price_gamma = get_price_from_address(gamma)
