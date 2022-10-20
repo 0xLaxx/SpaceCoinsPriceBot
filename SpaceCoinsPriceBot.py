@@ -10,7 +10,7 @@ import datetime
 cg = CoinGeckoAPI()
 print("Bot started...")
 
-wait_time = datetime.timedelta(minutes = 30)
+wait_time = datetime.timedelta(seconds = 10)
 next_request_time = datetime.datetime.now()
 
 eth = "0x0000000000000000000000000000000000000000"
