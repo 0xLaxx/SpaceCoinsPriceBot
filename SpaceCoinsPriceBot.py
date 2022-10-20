@@ -80,7 +80,7 @@ def price_command(update, context):
             price_xi = get_price_from_address(xi)
             output = f"Beta: `${str(round(price_beta,2))}`\nRho: `${str(round(price_rho,2))}`\nKappa: `${str(round(price_kappa,2))}`\nGamma: `${str(round(price_gamma,2))}`\nXi: `${str(round(price_xi,6))}`"
             update.message.reply_text(output, parse_mode = ParseMode.MARKDOWN, quote = False)
-            next_request_time = datetime.datetime.now() + wait_time
+            #next_request_time = datetime.datetime.now() + wait_time
         except:
             update.message.reply_text('Error. Try again later lol', parse_mode = ParseMode.MARKDOWN, quote = False)
 
