@@ -7,6 +7,11 @@ from time import sleep
 from pycoingecko import CoinGeckoAPI
 import datetime
 
+# REPLACE HERE
+provider = "https://mainnet.infura.io/v3/INFURA-PRJECT-ID"
+telegramApiKey = "TELEGRAM-API-KEY"
+
+# BOT / SETUP
 cg = CoinGeckoAPI()
 print("Bot v20.12.22 started...")
 
@@ -15,7 +20,6 @@ print("Bot v20.12.22 started...")
 
 eth = "0x0000000000000000000000000000000000000000"
 private_key = None
-provider = "https://mainnet.infura.io/v3/a30ae197803a473c8a2560fda0f89889"
 uniswap = Uniswap(address = eth, private_key = private_key, version = 2, provider = provider)
 
 xi = '0x295B42684F90c77DA7ea46336001010F2791Ec8c'
@@ -85,7 +89,7 @@ def price_command(update, context):
             update.message.reply_text('Error. Try again later lol', parse_mode = ParseMode.MARKDOWN, quote = False)
 
 def main():
-    updater = Updater("1978205069:AAHV1wqGVl7gI3WwfTLFbtwQha4o0oEkcJo", use_context = True)
+    updater = Updater(telegramApiKey, use_context = True)
     dp = updater.dispatcher
     dp.add_handler(CommandHandler("start", start_command))
     dp.add_handler(CommandHandler("xi", xi_command))
